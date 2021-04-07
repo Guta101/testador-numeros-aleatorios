@@ -6,4 +6,3 @@ Este projeto tem o objetivo de criar um programa capaz de receber uma sequência
 Integrantes:
 - Gustavo Tartaglia Silva de Paula
 - Maxsuel Matilde Marques
-- Jefferson Teixeira
