@@ -1,5 +1,6 @@
 package tks;
 
+// AINDA NÃO ESTÁ COMPLETAMENTE FEITO. FALTA CALCULAR O "fat" E O "dfa". CERTAMENTE FALTA COISAS QUE EU AINDA NAO IDENTIFIQUEI.
 public class TKS {
 
     public static void main(String[] args) {
