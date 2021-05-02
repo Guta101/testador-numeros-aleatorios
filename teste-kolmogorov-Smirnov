@@ -1,0 +1,46 @@
+package tks;
+
+public class TKS {
+
+    public static void main(String[] args) {
+
+        int[] numeros = new int[257];
+        
+        int[] fao = new int[257]; // frequencia absoluta observada
+        double[] fro = new double[257]; // frequencia relativa observada
+        double[] freq = new double[257]; // frequencia acumulada observada 
+        double[] fat = new double[257]; // frequencia acumulada teorica - ainda nao feito
+        double[] dfa = new double[257]; // diferenças frequencia acumulada - ainda nao feito
+        double[] valorcritico = new double[257]; // resultado de valor critico
+        
+        //adicionando os numeros no vetor numeros
+        for (int i = 1; i <= 256; i++) {
+            numeros[i] = i;
+        }
+
+        for (int i = 1; i <= 256; i++) {
+            for (int j = 1; j <= 256; j++) {
+                if (numeros[j] == i) {
+                    fao[j] = fao[j] + 1;
+                    fro[j] = fao[j] / 256.00;
+                    freq[j] = fro[j] + fro[j-1];
+                    
+                }
+            }
+        }
+        
+        System.out.println("FAO -  FRO   -  FREQ  - FAT -   DFA  - NUM");
+        for(int i = 1; i <= 256; i++){
+            System.out.printf(" %d  - %.4f - %.4f - %.1f - %.4f -  %d", fao[i], fro[i], freq[i], fat[i], dfa[i], numeros[i]);
+            System.out.printf("\n");
+
+        }
+        
+        //calculo de valor critico
+        for(int i = 1; i <= 256; i++){
+            System.out.printf("O valor critico de %d é: %.2f\n", i, valorcritico[i] = 1,36 / Math.sqrt(i));
+        }
+        
+    }
+
+}
