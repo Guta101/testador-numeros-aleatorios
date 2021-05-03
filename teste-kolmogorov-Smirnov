@@ -1,47 +1,76 @@
 package tks;
 
-// AINDA NÃO ESTÁ COMPLETAMENTE FEITO. FALTA CALCULAR O "fat" E O "dfa". CERTAMENTE FALTA COISAS QUE EU AINDA NAO IDENTIFIQUEI.
+/* =========================
+ULTIMA ATUALIZAÇÃO: 03-05-2021
+NA ULTIMA ATUALIZAÇÃO FOI ADICIONADO:
+1 - Verificação se um numero repete.
+
+NA ULTIMA ATUALIZAÇÃO FOI CORRIGIDO:
+1 - um bug que fazia com que a frequencia sempre ficasse em 0,0078 a partir 
+do segundo numero.
+
+FALTANDO:
+1 - O calculo da frequencia acumulada teorica;
+2 - o calculo da diferenças frequencia acumulada;
+3 - arrumar o calculo de valor critico.
+
+*/
+
 public class TKS {
 
     public static void main(String[] args) {
 
         int[] numeros = new int[257];
-        
+
         int[] fao = new int[257]; // frequencia absoluta observada
         double[] fro = new double[257]; // frequencia relativa observada
         double[] freq = new double[257]; // frequencia acumulada observada 
         double[] fat = new double[257]; // frequencia acumulada teorica - ainda nao feito
         double[] dfa = new double[257]; // diferenças frequencia acumulada - ainda nao feito
         double[] valorcritico = new double[257]; // resultado de valor critico
-        
+        int numrepqtd = 0; //quantidade de numeros repetidos
+
         //adicionando os numeros no vetor numeros
         for (int i = 1; i <= 256; i++) {
-            numeros[i] = i;
+                numeros[i] = i;
         }
 
         for (int i = 1; i <= 256; i++) {
-            for (int j = 1; j <= 256; j++) {
-                if (numeros[j] == i) {
-                    fao[j] = fao[j] + 1;
-                    fro[j] = fao[j] / 256.00;
-                    freq[j] = fro[j] + fro[j-1];
-                    
+
+            if (numeros[i] == i) {
+                fao[i]++;
+                fro[i] = fao[i] / 256.00;
+                if (i == 1) {
+                    freq[i] = fro[i];
+                } else if (i != 1) {
+                    freq[i] = freq[i - 1] + fro[i];
+                }
+
+            } else if (numeros[i] != i) {
+                for (int j = 1; j <= 256; j++) {
+                    if (numeros[j] == numeros[i] && numrepqtd == 0) {
+                        fao[j]++;
+                        fao[i] = fao[j];
+                        fro[i] = fao[i] / 256.00;
+                        freq[i] = fro[i] + fro[i - 1];
+                        numrepqtd++;
+                    }
                 }
             }
         }
-        
+
         System.out.println("FAO -  FRO   -  FREQ  - FAT -   DFA  - NUM");
-        for(int i = 1; i <= 256; i++){
+
+        for (int i = 1; i <= 256; i++) {
             System.out.printf(" %d  - %.4f - %.4f - %.1f - %.4f -  %d", fao[i], fro[i], freq[i], fat[i], dfa[i], numeros[i]);
             System.out.printf("\n");
 
         }
-        
+
         //calculo de valor critico
-        for(int i = 1; i <= 256; i++){
+        for (int i = 1; i <= 256; i++) {
             System.out.printf("O valor critico de %d é: %.2f\n", i, valorcritico[i] = 1,36 / Math.sqrt(i));
         }
-        
-    }
 
+    }
 }
