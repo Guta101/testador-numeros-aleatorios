@@ -1,21 +1,5 @@
 package tks;
 
-/* =========================
-ULTIMA ATUALIZAÇÃO: 03-05-2021
-NA ULTIMA ATUALIZAÇÃO FOI ADICIONADO:
-1 - Verificação se um numero repete.
-
-NA ULTIMA ATUALIZAÇÃO FOI CORRIGIDO:
-1 - um bug que fazia com que a frequencia sempre ficasse em 0,0078 a partir 
-do segundo numero.
-
-FALTANDO:
-1 - O calculo da frequencia acumulada teorica;
-2 - o calculo da diferenças frequencia acumulada;
-3 - arrumar o calculo de valor critico.
-
-*/
-
 public class TKS {
 
     public static void main(String[] args) {
@@ -32,7 +16,7 @@ public class TKS {
 
         //adicionando os numeros no vetor numeros
         for (int i = 1; i <= 256; i++) {
-                numeros[i] = i;
+            numeros[i] = i;
         }
 
         for (int i = 1; i <= 256; i++) {
@@ -69,7 +53,8 @@ public class TKS {
 
         //calculo de valor critico
         for (int i = 1; i <= 256; i++) {
-            System.out.printf("O valor critico de %d é: %.2f\n", i, valorcritico[i] = 1,36 / Math.sqrt(i));
+            valorcritico[i] = 1.36 / Math.sqrt(fao[i]);
+            System.out.printf("O valor critico de %d é: %.2f\n", numeros[i], valorcritico[i]);
         }
 
     }
