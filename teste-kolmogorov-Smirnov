@@ -17,58 +17,71 @@ public class TKS {
         for (int i = 1; i <= 256; i++) {
             numeros[i] = i;
         }
+        
+        fat[0] = 0.1;
+        fat[1] = 0.2;
+        fat[2] = 0.3;
+        fat[3] = 0.4;
+        fat[4] = 0.5;
+        fat[5] = 0.6;
+        fat[6] = 0.7;
+        fat[7] = 0.8;
+        fat[8] = 0.9;
+        fat[9] = 1.0;
+        fat[10] = 1.1;
 
         for (int i = 1; i <= 256; i++) {
 
             if(numeros[i] >= 1 && numeros[i] <= 25){
                 fao[0]++;
-                fro[0] = fao[0] / 256.00;
-                freq[0] = freq[0] + fro[0]; 
+                fro[0] = fao[0] / 256.00;            
             }
             else if(numeros[i] >= 26 && numeros[i] <= 50){
                 fao[1]++;
                 fro[1] = fao[1] / 256.00;
-                freq[1] = freq[0] + fro[1]; 
             } else if(numeros[i] >= 51 && numeros[i] <= 75){
                 fao[2]++;
                 fro[2] = fao[2] / 256.00;
-                freq[2] = freq[1] + fro[2]; 
             } else if(numeros[i] >= 76 && numeros[i] <= 100){
                 fao[3]++;
                 fro[3] = fao[3] / 256.00;
-                freq[3] = freq[2] + fro[3]; 
             } else if(numeros[i] >= 101 && numeros[i] <= 125){
                 fao[4]++;
-                fro[4] = fao[4] / 256.00;
-                freq[4] = freq[3] + fro[4]; 
+                fro[4] = fao[4] / 256.00; 
             } else if(numeros[i] >= 126 && numeros[i] <= 150){
                 fao[5]++;
-                fro[5] = fao[5] / 256.00;
-                freq[5] = freq[4] + fro[5]; 
+                fro[5] = fao[5] / 256.00; 
             } else if(numeros[i] >= 151 && numeros[i] <= 175){
                 fao[6]++;
-                fro[6] = fao[6] / 256.00;
-                freq[6] = freq[5] + fro[6]; 
+                fro[6] = fao[6] / 256.00; 
             } else if(numeros[i] >= 176 && numeros[i] <= 200){
                 fao[7]++;
                 fro[7] = fao[7] / 256.00;
-                freq[7] = freq[6] + fro[7]; 
             } else if(numeros[i] >= 201 && numeros[i] <= 225){
                 fao[8]++;
                 fro[8] = fao[8] / 256.00;
-                freq[8] = freq[7] + fro[8]; 
             } else if(numeros[i] >= 226 && numeros[i] <= 250){
                 fao[9]++;
-                fro[9] = fao[9] / 256.00;
-                freq[9] = freq[8] + fro[9]; 
+                fro[9] = fao[9] / 256.00; 
             } else if(numeros[i] >= 251 && numeros[i] <= 256){
                 fao[10]++;
-                fro[10] = fao[10] / 256.00;
-                freq[10] = freq[9] + fro[10]; 
+                fro[10] = fao[10] / 256.00;                
+            }
+            
+            for(int j = 0; j <= 10; j++){
+                if(j == 0){
+                    freq[j] = fro[j]; 
+                }else{
+                    freq[j] = freq[j-1] + fro[j];
+                }                
+            }            
+            for(int j = 0; j <= 10; j++){
+                dfa[j] = fat[j] - freq[j];
             }
         }
 
 
+        
 
         System.out.println("FAO -  FRO   -  FREQ  - FAT -   DFA    |   NUM");
 
@@ -126,9 +139,7 @@ public class TKS {
                 System.out.printf("O valor critico de 226 - 250 é: %.2f\n", valorcritico[i]);
             } else if(i == 10){
                 System.out.printf("O valor critico de 251 - 256 é: %.2f\n", valorcritico[i]);
-            }
-            
+            }            
         }
-
     }
 }
