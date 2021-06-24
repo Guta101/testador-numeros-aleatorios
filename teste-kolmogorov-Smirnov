@@ -4,142 +4,128 @@ public class TKS {
 
     public static void main(String[] args) {
 
-        int[] numeros = new int[257];
+        int[] numeros = new int[1025]; // variavel de numeros
+        int[] fao = new int[10]; // frequencia absoluta observada
+        double[] fro = new double[10]; // frequencia relativa observada
+        double[] freq = new double[10]; // frequencia acumulada observada 
+        double[] fat = new double[10]; // frequencia acumulada teorica 
+        double[] dfa = new double[10]; // diferenças frequencia acumulada
+        double[] valorcritico = new double[10]; // resultado de valor critico
 
-        int[] fao = new int[11]; // frequencia absoluta observada
-        double[] fro = new double[11]; // frequencia relativa observada
-        double[] freq = new double[11]; // frequencia acumulada observada 
-        double[] fat = new double[11]; // frequencia acumulada teorica - ainda nao feito
-        double[] dfa = new double[11]; // diferenças frequencia acumulada - ainda nao feito
-        double[] valorcritico = new double[11]; // resultado de valor critico
-
-        //adicionando os numeros no vetor numeros
-        for (int i = 1; i <= 256; i++) {
+        //adicionando os numeros no vetor numeros (utilize essa variavel para colocar seus numeros)
+        for (int i = 0; i <= 1024; i++) {
             numeros[i] = i;
         }
-        
-        fat[0] = 0.1;
-        fat[1] = 0.2;
-        fat[2] = 0.3;
-        fat[3] = 0.4;
-        fat[4] = 0.5;
-        fat[5] = 0.6;
-        fat[6] = 0.7;
-        fat[7] = 0.8;
-        fat[8] = 0.9;
-        fat[9] = 1.0;
-        fat[10] = 1.1;
-
-        for (int i = 1; i <= 256; i++) {
-
-            if(numeros[i] >= 1 && numeros[i] <= 25){
+        //adicionando o valor da frequencia acumulada teorica
+        for(int i = 0; i <= 9; i++){
+            if(i == 0){
+                fat[i] = 0.1;
+            } else {
+                fat[i] = fat[i-1] + 0.1;
+            }
+        }
+        //calculo de quantidade de numeros
+        for (int i = 0; i <= 1024; i++) {
+            if(numeros[i] >= 0 && numeros[i] <= 102){
                 fao[0]++;
                 fro[0] = fao[0] / 256.00;            
             }
-            else if(numeros[i] >= 26 && numeros[i] <= 50){
+            else if(numeros[i] >= 103 && numeros[i] <= 205){
                 fao[1]++;
                 fro[1] = fao[1] / 256.00;
-            } else if(numeros[i] >= 51 && numeros[i] <= 75){
+            } else if(numeros[i] >= 206 && numeros[i] <= 308){
                 fao[2]++;
                 fro[2] = fao[2] / 256.00;
-            } else if(numeros[i] >= 76 && numeros[i] <= 100){
+            } else if(numeros[i] >= 309 && numeros[i] <= 411){
                 fao[3]++;
                 fro[3] = fao[3] / 256.00;
-            } else if(numeros[i] >= 101 && numeros[i] <= 125){
+            } else if(numeros[i] >= 412 && numeros[i] <= 514){
                 fao[4]++;
                 fro[4] = fao[4] / 256.00; 
-            } else if(numeros[i] >= 126 && numeros[i] <= 150){
+            } else if(numeros[i] >= 515 && numeros[i] <= 617){
                 fao[5]++;
                 fro[5] = fao[5] / 256.00; 
-            } else if(numeros[i] >= 151 && numeros[i] <= 175){
+            } else if(numeros[i] >= 618 && numeros[i] <= 720){
                 fao[6]++;
                 fro[6] = fao[6] / 256.00; 
-            } else if(numeros[i] >= 176 && numeros[i] <= 200){
+            } else if(numeros[i] >= 721 && numeros[i] <= 823){
                 fao[7]++;
                 fro[7] = fao[7] / 256.00;
-            } else if(numeros[i] >= 201 && numeros[i] <= 225){
+            } else if(numeros[i] >= 824 && numeros[i] <= 926){
                 fao[8]++;
                 fro[8] = fao[8] / 256.00;
-            } else if(numeros[i] >= 226 && numeros[i] <= 250){
+            } else if(numeros[i] >= 927 && numeros[i] <= 1024){
                 fao[9]++;
                 fro[9] = fao[9] / 256.00; 
-            } else if(numeros[i] >= 251 && numeros[i] <= 256){
-                fao[10]++;
-                fro[10] = fao[10] / 256.00;                
             }
             
-            for(int j = 0; j <= 10; j++){
+            for(int j = 0; j <= 9; j++){
                 if(j == 0){
                     freq[j] = fro[j]; 
                 }else{
                     freq[j] = freq[j-1] + fro[j];
                 }                
             }            
-            for(int j = 0; j <= 10; j++){
+            for(int j = 0; j <= 9; j++){
                 dfa[j] = fat[j] - freq[j];
+                dfa[j] = dfa[j] * -1;
             }
         }
-
-
-        
-
+        //for para imprimir a tabela. Recomendo que utilize-a antes de apagar ela do código, para ter total conhecimento sobre quais numeros utilizar, logo após pode apagar, pois nenhum valor é armazenado em tal.
         System.out.println("FAO -  FRO   -  FREQ  - FAT -   DFA    |   NUM");
-
-        for (int i = 0; i <= 10; i++) {
+        for (int i = 0; i <= 9; i++) {
             System.out.printf(" %d  - %.4f - %.4f - %.1f - %.4f", fao[i], fro[i], freq[i], fat[i], dfa[i]);
             if(i == 0){
-                System.out.printf("  |  1 - 25");
+                System.out.printf("  |  0 - 102");
             } else if(i == 1){
-                System.out.printf("  | 26 - 50");
+                System.out.printf("  |103 - 205");
             } else if(i == 2){
-                System.out.printf("  | 51 - 75");
+                System.out.printf("  |206 - 308");
             } else if(i == 3){
-                System.out.printf("  | 76 - 100");
+                System.out.printf("  |309 - 411");
             } else if(i == 4){
-                System.out.printf("  |101 - 125");
+                System.out.printf("  |412 - 514");
             } else if(i == 5){
-                System.out.printf("  |126 - 150");
+                System.out.printf("  |515 - 617");
             } else if(i == 6){
-                System.out.printf("  |151 - 175");
+                System.out.printf("  |618 - 720");
             } else if(i == 7){
-                System.out.printf("  |176 - 200");
+                System.out.printf("  |721 - 823");
             } else if(i == 8){
-                System.out.printf("  |201 - 225");
+                System.out.printf("  |824 - 926");
             } else if(i == 9){
-                System.out.printf("  |226 - 250");
-            } else if(i == 10){
-                System.out.printf("   |251 - 256");
-            } 
+                System.out.printf("  |927 - 1024");
+            }  
             System.out.printf("\n");
-
         }
-
-        //calculo de valor critico
-        for (int i = 0; i <= 10; i++) {
+        //Cálculo do valor critico
+        for (int i = 0; i <= 9; i++){
             valorcritico[i] = 1.36 / Math.sqrt(fao[i]);
+        }
+        
+        //Impressão do resultado do cálculo do valor critico (veja a descrição da atualização de 24/06/2021 no github).
+        for (int i = 0; i <= 9; i++) {
             if(i == 0){
-                System.out.printf("O valor critico de 1 - 25 é: %.2f\n", valorcritico[i]);
+                System.out.printf("O valor critico de 0 - 102 é: %.2f\n", valorcritico[i]);
             } else if(i == 1){
-                System.out.printf("O valor critico de 26 - 50 é: %.2f\n", valorcritico[i]);
+                System.out.printf("O valor critico de 103 - 205 é: %.2f\n", valorcritico[i]);
             } else if(i == 2){
-                System.out.printf("O valor critico de 50 - 75 é: %.2f\n", valorcritico[i]);
+                System.out.printf("O valor critico de 206 - 308 é: %.2f\n", valorcritico[i]);
             } else if(i == 3){
-                System.out.printf("O valor critico de 76 - 100 é: %.2f\n", valorcritico[i]);
+                System.out.printf("O valor critico de 309 - 411 é: %.2f\n", valorcritico[i]);
             } else if(i == 4){
-                System.out.printf("O valor critico de 101 - 125 é: %.2f\n", valorcritico[i]);
+                System.out.printf("O valor critico de 412 - 514 é: %.2f\n", valorcritico[i]);
             } else if(i == 5){
-                System.out.printf("O valor critico de 126 - 150 é: %.2f\n", valorcritico[i]);
+                System.out.printf("O valor critico de 515 - 617 é: %.2f\n", valorcritico[i]);
             } else if(i == 6){
-                System.out.printf("O valor critico de 151 - 175 é: %.2f\n", valorcritico[i]);
+                System.out.printf("O valor critico de 618 - 720 é: %.2f\n", valorcritico[i]);
             } else if(i == 7){
-                System.out.printf("O valor critico de 176 - 200 é: %.2f\n", valorcritico[i]);
+                System.out.printf("O valor critico de 721 - 823 é: %.2f\n", valorcritico[i]);
             } else if(i == 8){
-                System.out.printf("O valor critico de 201 - 225 é: %.2f\n", valorcritico[i]);
+                System.out.printf("O valor critico de 824 - 926 é: %.2f\n", valorcritico[i]);
             } else if(i == 9){
-                System.out.printf("O valor critico de 226 - 250 é: %.2f\n", valorcritico[i]);
-            } else if(i == 10){
-                System.out.printf("O valor critico de 251 - 256 é: %.2f\n", valorcritico[i]);
-            }            
+                System.out.printf("O valor critico de 927 - 1024 é: %.2f\n", valorcritico[i]);
+            }       
         }
     }
 }
