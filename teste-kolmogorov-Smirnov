@@ -28,35 +28,35 @@ public class TKS {
         for (int i = 0; i <= 1024; i++) {
             if(numeros[i] >= 0 && numeros[i] <= 102){
                 fao[0]++;
-                fro[0] = fao[0] / 256.00;            
+                fro[0] = fao[0] / 1024.00;            
             }
             else if(numeros[i] >= 103 && numeros[i] <= 205){
                 fao[1]++;
-                fro[1] = fao[1] / 256.00;
+                fro[1] = fao[1] / 1024.00;
             } else if(numeros[i] >= 206 && numeros[i] <= 308){
                 fao[2]++;
-                fro[2] = fao[2] / 256.00;
+                fro[2] = fao[2] / 1024.00;
             } else if(numeros[i] >= 309 && numeros[i] <= 411){
                 fao[3]++;
-                fro[3] = fao[3] / 256.00;
+                fro[3] = fao[3] / 1024.00;
             } else if(numeros[i] >= 412 && numeros[i] <= 514){
                 fao[4]++;
-                fro[4] = fao[4] / 256.00; 
+                fro[4] = fao[4] / 1024.00; 
             } else if(numeros[i] >= 515 && numeros[i] <= 617){
                 fao[5]++;
-                fro[5] = fao[5] / 256.00; 
+                fro[5] = fao[5] / 1024.00; 
             } else if(numeros[i] >= 618 && numeros[i] <= 720){
                 fao[6]++;
-                fro[6] = fao[6] / 256.00; 
+                fro[6] = fao[6] / 1024.00; 
             } else if(numeros[i] >= 721 && numeros[i] <= 823){
                 fao[7]++;
-                fro[7] = fao[7] / 256.00;
+                fro[7] = fao[7] / 1024.00;
             } else if(numeros[i] >= 824 && numeros[i] <= 926){
                 fao[8]++;
-                fro[8] = fao[8] / 256.00;
+                fro[8] = fao[8] / 1024.00;
             } else if(numeros[i] >= 927 && numeros[i] <= 1024){
                 fao[9]++;
-                fro[9] = fao[9] / 256.00; 
+                fro[9] = fao[9] / 1024.00; 
             }
             
             for(int j = 0; j <= 9; j++){
@@ -67,8 +67,7 @@ public class TKS {
                 }                
             }            
             for(int j = 0; j <= 9; j++){
-                dfa[j] = fat[j] - freq[j];
-                dfa[j] = dfa[j] * -1;
+                dfa[j] = freq[j] - fat[j];
             }
         }
         //for para imprimir a tabela. Recomendo que utilize-a antes de apagar ela do código, para ter total conhecimento sobre quais numeros utilizar, logo após pode apagar, pois nenhum valor é armazenado em tal.
