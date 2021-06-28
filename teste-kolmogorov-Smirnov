@@ -13,8 +13,9 @@ public class TKS {
         double[] valorcritico = new double[10]; // resultado de valor critico
 
         //adicionando os numeros no vetor numeros (utilize essa variavel para colocar seus numeros)
-        for (int i = 0; i <= 1024; i++) {
+        for (int i = 0; i <= 1024; i++){
             numeros[i] = i;
+            
         }
         //adicionando o valor da frequencia acumulada teorica
         for(int i = 0; i <= 9; i++){
@@ -26,35 +27,35 @@ public class TKS {
         }
         //calculo de quantidade de numeros
         for (int i = 0; i <= 1024; i++) {
-            if(numeros[i] >= 0 && numeros[i] <= 102){
+            if(numeros[i] >= 0 && numeros[i] <= 25){
                 fao[0]++;
                 fro[0] = fao[0] / 1024.00;            
             }
-            else if(numeros[i] >= 103 && numeros[i] <= 205){
+            else if(numeros[i] >= 26 && numeros[i] <= 51){
                 fao[1]++;
                 fro[1] = fao[1] / 1024.00;
-            } else if(numeros[i] >= 206 && numeros[i] <= 308){
+            } else if(numeros[i] >= 52 && numeros[i] <= 77){
                 fao[2]++;
                 fro[2] = fao[2] / 1024.00;
-            } else if(numeros[i] >= 309 && numeros[i] <= 411){
+            } else if(numeros[i] >= 78 && numeros[i] <= 103){
                 fao[3]++;
                 fro[3] = fao[3] / 1024.00;
-            } else if(numeros[i] >= 412 && numeros[i] <= 514){
+            } else if(numeros[i] >= 104 && numeros[i] <= 129){
                 fao[4]++;
                 fro[4] = fao[4] / 1024.00; 
-            } else if(numeros[i] >= 515 && numeros[i] <= 617){
+            } else if(numeros[i] >= 130 && numeros[i] <= 155){
                 fao[5]++;
                 fro[5] = fao[5] / 1024.00; 
-            } else if(numeros[i] >= 618 && numeros[i] <= 720){
+            } else if(numeros[i] >= 156 && numeros[i] <= 181){
                 fao[6]++;
                 fro[6] = fao[6] / 1024.00; 
-            } else if(numeros[i] >= 721 && numeros[i] <= 823){
+            } else if(numeros[i] >= 182 && numeros[i] <= 207){
                 fao[7]++;
                 fro[7] = fao[7] / 1024.00;
-            } else if(numeros[i] >= 824 && numeros[i] <= 926){
+            } else if(numeros[i] >= 208 && numeros[i] <= 233){
                 fao[8]++;
                 fro[8] = fao[8] / 1024.00;
-            } else if(numeros[i] >= 927 && numeros[i] <= 1024){
+            } else if(numeros[i] >= 234 && numeros[i] <= 255){
                 fao[9]++;
                 fro[9] = fao[9] / 1024.00; 
             }
@@ -75,25 +76,25 @@ public class TKS {
         for (int i = 0; i <= 9; i++) {
             System.out.printf(" %d  - %.4f - %.4f - %.1f - %.4f", fao[i], fro[i], freq[i], fat[i], dfa[i]);
             if(i == 0){
-                System.out.printf("  |  0 - 102");
+                System.out.printf(" |  0 - 25");
             } else if(i == 1){
-                System.out.printf("  |103 - 205");
+                System.out.printf(" | 26 - 51");
             } else if(i == 2){
-                System.out.printf("  |206 - 308");
+                System.out.printf(" | 52 - 77");
             } else if(i == 3){
-                System.out.printf("  |309 - 411");
+                System.out.printf(" | 78 - 103");
             } else if(i == 4){
-                System.out.printf("  |412 - 514");
+                System.out.printf(" |104 - 129");
             } else if(i == 5){
-                System.out.printf("  |515 - 617");
+                System.out.printf(" |130 - 155");
             } else if(i == 6){
-                System.out.printf("  |618 - 720");
+                System.out.printf(" |156 - 181");
             } else if(i == 7){
-                System.out.printf("  |721 - 823");
+                System.out.printf(" |182 - 207");
             } else if(i == 8){
-                System.out.printf("  |824 - 926");
+                System.out.printf(" |208 - 233");
             } else if(i == 9){
-                System.out.printf("  |927 - 1024");
+                System.out.printf(" |234 - 255");
             }  
             System.out.printf("\n");
         }
@@ -105,26 +106,27 @@ public class TKS {
         //Impressão do resultado do cálculo do valor critico (veja a descrição da atualização de 24/06/2021 no github).
         for (int i = 0; i <= 9; i++) {
             if(i == 0){
-                System.out.printf("O valor critico de 0 - 102 é: %.2f\n", valorcritico[i]);
+                System.out.printf("O valor critico de 0 - 25 é: %.2f\n", valorcritico[i]);
             } else if(i == 1){
-                System.out.printf("O valor critico de 103 - 205 é: %.2f\n", valorcritico[i]);
+                System.out.printf("O valor critico de 26 - 51 é: %.2f\n", valorcritico[i]);
             } else if(i == 2){
-                System.out.printf("O valor critico de 206 - 308 é: %.2f\n", valorcritico[i]);
+                System.out.printf("O valor critico de 52 - 77 é: %.2f\n", valorcritico[i]);
             } else if(i == 3){
-                System.out.printf("O valor critico de 309 - 411 é: %.2f\n", valorcritico[i]);
+                System.out.printf("O valor critico de 78 - 103 é: %.2f\n", valorcritico[i]);
             } else if(i == 4){
-                System.out.printf("O valor critico de 412 - 514 é: %.2f\n", valorcritico[i]);
+                System.out.printf("O valor critico de 104 - 129 é: %.2f\n", valorcritico[i]);
             } else if(i == 5){
-                System.out.printf("O valor critico de 515 - 617 é: %.2f\n", valorcritico[i]);
+                System.out.printf("O valor critico de 130 - 155 é: %.2f\n", valorcritico[i]);
             } else if(i == 6){
-                System.out.printf("O valor critico de 618 - 720 é: %.2f\n", valorcritico[i]);
+                System.out.printf("O valor critico de 156 - 181 é: %.2f\n", valorcritico[i]);
             } else if(i == 7){
-                System.out.printf("O valor critico de 721 - 823 é: %.2f\n", valorcritico[i]);
+                System.out.printf("O valor critico de 182 - 207 é: %.2f\n", valorcritico[i]);
             } else if(i == 8){
-                System.out.printf("O valor critico de 824 - 926 é: %.2f\n", valorcritico[i]);
+                System.out.printf("O valor critico de 208 - 233 é: %.2f\n", valorcritico[i]);
             } else if(i == 9){
-                System.out.printf("O valor critico de 927 - 1024 é: %.2f\n", valorcritico[i]);
+                System.out.printf("O valor critico de 234 - 255 é: %.2f\n", valorcritico[i]);
             }       
         }
     }
 }
+
